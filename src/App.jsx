@@ -25,10 +25,13 @@ const asCurrency = (value) =>
 
 function App() {
   const [income, setIncome] = useState('')
+  const [targetSavings, setTargetSavings] = useState('')
   const [categories, setCategories] = useState(DEFAULT_CATEGORIES.map((name) => ({ name, amount: '' })))
   const [newCategory, setNewCategory] = useState('')
 
   const parsedIncome = Number(income) || 0
+  const parsedTargetSavings = Number(targetSavings) || 0
+
 
   const totals = useMemo(() => {
     const categoryTotals = categories.map((category) => ({
@@ -52,6 +55,31 @@ function App() {
       highestCategory,
     }
   }, [categories, parsedIncome])
+
+const goalProgress = useMemo(() => {
+  if (parsedTargetSavings <= 0) {
+    return { pct: 0, label: 'Set a target to track progress', status: 'neutral' }
+  }
+
+  const pct = (totals.savings / parsedTargetSavings) * 100
+  const clamped = Math.max(0, Math.min(100, pct))
+
+  let status = 'warn'
+  let label = `Behind (${asCurrency(totals.savings)} / ${asCurrency(parsedTargetSavings)})`
+
+  if (totals.savings >= parsedTargetSavings) {
+    status = 'good'
+    label = `Goal achieved (${asCurrency(totals.savings)} / ${asCurrency(parsedTargetSavings)})`
+  } else if (totals.savings < 0) {
+    status = 'bad'
+    label = 'Behind (negative balance)'
+  } else if (clamped >= 70) {
+    status = 'warn'
+    label = `On track (${asCurrency(totals.savings)} / ${asCurrency(parsedTargetSavings)})`
+  }
+
+  return { pct: clamped, label, status }
+}, [parsedTargetSavings, totals.savings])
 
   const validationErrors = useMemo(() => {
     const errors = []
@@ -127,6 +155,17 @@ function App() {
                 placeholder="Enter income"
               />
             </label>
+            <label style={{ marginTop: 12 }}>
+  Target Savings (monthly)
+  <input
+    type="number"
+    min="0"
+    step="1"
+    value={targetSavings}
+    onChange={(event) => setTargetSavings(event.target.value)}
+    placeholder="Enter target (e.g., 5000)"
+  />
+</label>
 
             <div className="category-list">
               {categories.map((category, index) => (
@@ -217,6 +256,24 @@ function App() {
       <span>{asCurrency(totals.totalExpense)} spent</span>
       <span>{totals.savingsRate.toFixed(1)}% saved</span>
     </div>
+    
+    {parsedTargetSavings > 0 && (
+  <div className="goal">
+    <div className="goal-top">
+      <span className="goal-title">Savings Goal</span>
+      <span className="goal-value">{asCurrency(parsedTargetSavings)}</span>
+    </div>
+
+    <div className="goal-progress">
+      <div
+        className={`goal-bar ${goalProgress.status}`}
+        style={{ width: `${goalProgress.pct}%` }}
+      />
+    </div>
+
+    <p className="goal-label">{goalProgress.label}</p>
+  </div>
+)}
   </div>
             <div className="insights">
               <h3>Insights</h3>
