@@ -78,7 +78,7 @@ function App() {
   
   const insights = [
     `Food is ${parsedIncome > 0 ? (((totals.categoryTotals.find((c) => c.name === 'Food')?.amount || 0) / parsedIncome) * 100).toFixed(1) : '0.0'}% of your income.`,
-    `Your savings rate is ${totals.savingsRate.toFixed(1)}% (${totals.savingsRate >= 20 ? 'healthy' : totals.savingsRate >= 10 ? 'moderate' : 'low'}).`,
+    `Your savings rate is ${totals.savingsRate.toFixed(1)}%.`,
     `Top spending category: ${totals.highestCategory.name} at ${asCurrency(totals.highestCategory.amount)}.`,
   ]
 
@@ -196,12 +196,30 @@ function App() {
                 <p>{totals.highestCategory.name}</p>
               </article>
             </div>
+            <div className="balance-card">
+    <div className="balance-top">
+      <h3>Net Balance</h3>
+      <span className={`badge ${savingsHealth.cls}`}>{savingsHealth.label}</span>
+    </div>
 
+    <p className={`balance-amount ${totals.savings < 0 ? 'negative' : 'positive'}`}>
+      {asCurrency(totals.savings)}
+    </p>
+
+    <div className="progress" aria-label="Savings progress">
+      <div
+        className="progress-bar"
+        style={{ width: `${Math.max(0, Math.min(100, totals.savingsRate))}%` }}
+      />
+    </div>
+
+    <div className="balance-meta">
+      <span>{asCurrency(totals.totalExpense)} spent</span>
+      <span>{totals.savingsRate.toFixed(1)}% saved</span>
+    </div>
+  </div>
             <div className="insights">
-              <h3>Insights
-                <span className={`badge ${savingsHealth.cls}`} style={{ marginLeft: 10 }}>
-      {savingsHealth.label}</span>
-              </h3>
+              <h3>Insights</h3>
               <ul>
                 {insights.map((insight) => (
                   <li key={insight}>{insight}</li>
