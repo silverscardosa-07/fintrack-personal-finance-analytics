@@ -70,7 +70,12 @@ function App() {
   }, [categories, income])
 
   const warning = totals.savings < 0 ? 'Warning: Your expenses are higher than your monthly income.' : ''
-
+  
+  const savingsHealth =
+  totals.savingsRate >= 20 ? { label: 'Healthy', cls: 'badgeGood' } :
+  totals.savingsRate >= 10 ? { label: 'Moderate', cls: 'badgeWarn' } :
+  { label: 'Low', cls: 'badgeBad' }
+  
   const insights = [
     `Food is ${parsedIncome > 0 ? (((totals.categoryTotals.find((c) => c.name === 'Food')?.amount || 0) / parsedIncome) * 100).toFixed(1) : '0.0'}% of your income.`,
     `Your savings rate is ${totals.savingsRate.toFixed(1)}% (${totals.savingsRate >= 20 ? 'healthy' : totals.savingsRate >= 10 ? 'moderate' : 'low'}).`,
@@ -193,7 +198,10 @@ function App() {
             </div>
 
             <div className="insights">
-              <h3>Insights</h3>
+              <h3>Insights
+                <span className={`badge ${savingsHealth.cls}`} style={{ marginLeft: 10 }}>
+      {savingsHealth.label}</span>
+              </h3>
               <ul>
                 {insights.map((insight) => (
                   <li key={insight}>{insight}</li>
@@ -212,7 +220,7 @@ function App() {
                   <h3>Category Share</h3>
                   <ResponsiveContainer width="100%" height={280}>
                     <PieChart>
-                      <Pie data={chartData} dataKey="amount" nameKey="name" outerRadius={90} label>
+                      <Pie data={chartData} dataKey="amount" nameKey="name" outerRadius={95}>
                         {chartData.map((entry, index) => (
                           <Cell key={entry.name} fill={CHART_COLORS[index % CHART_COLORS.length]} />
                         ))}
@@ -229,7 +237,7 @@ function App() {
                     <BarChart data={chartData} margin={{ top: 8, right: 16, left: 0, bottom: 16 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                       <XAxis dataKey="name" />
-                      <YAxis />
+                      <YAxis tickFormatter={(v) => `${Math.round(v / 1000)}k`} />
                       <Tooltip formatter={(value) => asCurrency(value)} />
                       <Bar dataKey="amount" radius={[6, 6, 0, 0]}>
                         {chartData.map((entry, index) => (
