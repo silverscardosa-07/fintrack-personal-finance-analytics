@@ -25,7 +25,9 @@ const asCurrency = (value) =>
 
 function App() {
   const [income, setIncome] = useState('')
+
   const [targetSavings, setTargetSavings] = useState('')
+
   const [categories, setCategories] = useState(DEFAULT_CATEGORIES.map((name) => ({ name, amount: '' })))
   const [newCategory, setNewCategory] = useState('')
 
@@ -55,6 +57,7 @@ function App() {
       highestCategory,
     }
   }, [categories, parsedIncome])
+
 
 const goalProgress = useMemo(() => {
   if (parsedTargetSavings <= 0) {
@@ -155,6 +158,7 @@ const goalProgress = useMemo(() => {
                 placeholder="Enter income"
               />
             </label>
+
             <label style={{ marginTop: 12 }}>
   Target Savings (monthly)
   <input
@@ -166,6 +170,7 @@ const goalProgress = useMemo(() => {
     placeholder="Enter target (e.g., 5000)"
   />
 </label>
+
 
             <div className="category-list">
               {categories.map((category, index) => (
@@ -235,10 +240,10 @@ const goalProgress = useMemo(() => {
                 <p>{totals.highestCategory.name}</p>
               </article>
             </div>
+
             <div className="balance-card">
     <div className="balance-top">
       <h3>Net Balance</h3>
-      <span className={`badge ${savingsHealth.cls}`}>{savingsHealth.label}</span>
     </div>
 
     <p className={`balance-amount ${totals.savings < 0 ? 'negative' : 'positive'}`}>
@@ -275,6 +280,7 @@ const goalProgress = useMemo(() => {
   </div>
 )}
   </div>
+
             <div className="insights">
               <h3>Insights</h3>
               <ul>
@@ -295,7 +301,9 @@ const goalProgress = useMemo(() => {
                   <h3>Category Share</h3>
                   <ResponsiveContainer width="100%" height={280}>
                     <PieChart>
+
                       <Pie data={chartData} dataKey="amount" nameKey="name" outerRadius={95}>
+
                         {chartData.map((entry, index) => (
                           <Cell key={entry.name} fill={CHART_COLORS[index % CHART_COLORS.length]} />
                         ))}
@@ -312,7 +320,9 @@ const goalProgress = useMemo(() => {
                     <BarChart data={chartData} margin={{ top: 8, right: 16, left: 0, bottom: 16 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                       <XAxis dataKey="name" />
+
                       <YAxis tickFormatter={(v) => `${Math.round(v / 1000)}k`} />
+
                       <Tooltip formatter={(value) => asCurrency(value)} />
                       <Bar dataKey="amount" radius={[6, 6, 0, 0]}>
                         {chartData.map((entry, index) => (

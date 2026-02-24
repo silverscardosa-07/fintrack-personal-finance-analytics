@@ -1,3 +1,4 @@
+
 # FinTrack – Personal Finance Analytics Dashboard
 
 A data-driven personal finance analytics web application that transforms raw monthly income and expense inputs into meaningful financial insights through real-time computation and interactive visualizations.
@@ -76,3 +77,4 @@ git clone https://github.com/silverscardosa-07/Personal-Finance-analytics-dashbo
 cd Personal-Finance-analytics-dashboard
 npm install
 npm run dev
+
