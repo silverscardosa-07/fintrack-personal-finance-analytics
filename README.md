@@ -4,7 +4,7 @@ A data-driven personal finance analytics web application that transforms raw mon
 
 🔗 **Live Demo:** https://fintrack-dashboard-orcin.vercel.app 
 
-📂 **GitHub Repository:** https://github.com/silverscardosa-07/Personal-Finance-analytics-dashboard.git
+📂 **GitHub Repository:** https://github.com/silverscardosa-07/fintrack-personal-finance-analytics.git
 
 
 ## 📊 Project Overview
