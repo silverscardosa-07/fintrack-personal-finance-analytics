@@ -3,6 +3,7 @@
 A data-driven personal finance analytics web application that transforms raw monthly income and expense inputs into meaningful financial insights through real-time computation and interactive visualizations.
 
 🔗 **Live Demo:** https://fintrack-dashboard-orcin.vercel.app 
+
 📂 **GitHub Repository:** https://github.com/silverscardosa-07/Personal-Finance-analytics-dashboard.git
 
 
