@@ -1,75 +1,77 @@
-# Personal-Finance-analytics-dashboard
 # FinTrack – Personal Finance Analytics Dashboard
 
-FinTrack is a React + Vite web app for tracking monthly income and spending. It helps users understand expense distribution, estimate savings, and quickly review actionable finance insights.
+A data-driven personal finance analytics web application that transforms raw monthly income and expense inputs into meaningful financial insights through real-time computation and interactive visualizations.
 
-## Features
+🔗 **Live Demo:** https://fintrack-dashboard-orcin.vercel.app 
+📂 **GitHub Repository:** https://github.com/silverscardosa-07/Personal-Finance-analytics-dashboard.git
 
-- Input monthly income and category expenses.
-- Preloaded categories: Food, Travel, Shopping, Rent, Bills, Other.
-- Add/remove custom categories dynamically.
-- Live calculations:
-  - Total expense
-  - Savings
+
+## 📊 Project Overview
+
+FinTrack focuses on **analyzing financial data** rather than just tracking it.
+
+The system processes user-provided income and categorized expenses to:
+
+- calculate key financial metrics
+- detect spending patterns
+- generate insight-driven summaries
+- visualize category-wise distributions
+
+This simulates a **real-world analytics workflow**:
+data input → processing → analysis → visualization → insights.
+
+
+## 🚀 Key Analytical Features
+
+- Real-time computation of:
+  - Total expenditure
+  - Net savings
   - Savings rate (%)
   - Highest spending category
-- Visual analytics:
-  - Pie chart for category share
-  - Bar chart for category amounts
-- Rule-based insights (non-AI), including:
-  - Food spend as a share of income
-  - Savings-rate health signal
-  - Top spending category summary
-- Input validation and warnings:
-  - No negative income/expenses
-  - Warning when expenses exceed income (negative savings)
-- Responsive dashboard layout for desktop and mobile.
+- Category-wise expense aggregation
+- Spending-to-income ratio analysis
+- Rule-based financial health classification
+- Dynamic custom category creation for flexible data modeling
+- Overspending detection with warning logic
 
-## Tech Stack
 
-- **Frontend:** React + Vite
-- **Charts:** Recharts
-- **Styling:** Plain CSS
-- **Deployment target:** Vercel
 
-## Local Development
+## 📈 Data Visualizations
 
-### 1) Install dependencies
+- **Pie Chart →** Proportional category contribution  
+- **Bar Chart →** Absolute category comparison  
+
+These visualizations help in:
+
+- identifying dominant expense areas
+- understanding distribution trends
+- enabling faster decision making
+
+
+## 🧠 Insight Generation Logic
+
+The dashboard converts raw numbers into human-readable insights such as:
+
+- “Food expenses are 24% of total income”
+- “Savings rate is healthy at 22%”
+- “Rent is the highest spending category”
+
+This demonstrates **analytical thinking and business interpretation of data**.
+
+
+## 🛠 Tech Stack
+
+**Frontend:** React (Vite)  
+**Data Visualization:** Recharts  
+**State & Data Processing:** React Hooks  
+**Styling:** CSS  
+**Deployment:** Vercel  
+
+
+## ⚙️ Run Locally
 
 ```bash
+git clone https://github.com/silverscardosa-07/Personal-Finance-analytics-dashboard.git
+cd Personal-Finance-analytics-dashboard
 npm install
-```
-
-### 2) Start development server
-
-```bash
 npm run dev
-```
-
-Then open the local URL printed by Vite (usually `http://localhost:5173`).
-
-### 3) Build for production
-
-```bash
-npm run build
-```
-
-### 4) Preview production build
-
-```bash
-npm run preview
-```
-
-## Deploy to Vercel
-
-1. Push this repository to GitHub.
-2. Import the repo in [Vercel](https://vercel.com/new).
-3. Vercel will auto-detect **Vite** settings.
-4. Use the default build settings:
-   - Build command: `npm run build`
-   - Output directory: `dist`
-5. Deploy.
-
-## Security Note
-
-This MVP runs fully in the browser and does not require API keys. Do not hardcode or expose API keys in frontend code.
