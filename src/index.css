@@ -229,6 +229,17 @@ button:disabled {
   letter-spacing: -0.01em;
 }
 
+.balance-amount-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.health-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 .positive {
   color: var(--good);
 }

@@ -246,9 +246,15 @@ const goalProgress = useMemo(() => {
       <h3>Net Balance</h3>
     </div>
 
-    <p className={`balance-amount ${totals.savings < 0 ? 'negative' : 'positive'}`}>
-      {asCurrency(totals.savings)}
-    </p>
+  <div className="balance-amount-row">
+  <p className={`balance-amount ${totals.savings < 0 ? 'negative' : 'positive'}`}>
+    {asCurrency(totals.savings)}
+  </p>
+
+  <span className={`health-text ${savingsHealth.cls}`}>
+    {savingsHealth.label}
+  </span>
+</div>
 
     <div className="progress" aria-label="Savings progress">
       <div
