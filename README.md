@@ -91,6 +91,8 @@ cd fintrack-dashboard
 npm install
 npm run dev
 
+---
+
 ## 📂 Project Structure
 src/
  ├── App.jsx
