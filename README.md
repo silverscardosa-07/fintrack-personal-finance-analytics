@@ -97,7 +97,9 @@ It can be used by:
 ## 👩‍💻 Author
 
 Bipasha Chatterjee
+
 CSE (AI/ML)
+
 Data Analytics & Frontend Enthusiast
 
 ---
