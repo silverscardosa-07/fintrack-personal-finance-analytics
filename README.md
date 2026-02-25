@@ -94,7 +94,7 @@ It can be used by:
 - ML-based spending prediction
 - Category-wise budget limits
 
-##👩‍💻 Author
+## 👩‍💻 Author
 
 Bipasha Chatterjee
 CSE (AI/ML)
