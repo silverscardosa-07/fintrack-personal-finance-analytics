@@ -70,29 +70,6 @@ A modern **data analytics–driven personal finance dashboard** that helps users
 
 ---
 
-## 📷 Screenshots
-
-### Dashboard Overview
-![Dashboard](./screenshots/dashboard.png)
-
-### Savings Trend
-![Trend](./screenshots/trend.png)
-
-### History Tracking
-![History](./screenshots/history.png)
-
----
-
-## ⚙️ Installation & Setup
-
-```bash
-git clone https://github.com/silverscardosa-07/fintrack-personal-finance-analytics.git
-cd fintrack-dashboard
-npm install
-npm run dev
-
----
-
 ## 📂 Project Structure
 src/
  ├── App.jsx
@@ -122,3 +99,13 @@ It can be used by:
 Bipasha Chatterjee
 CSE (AI/ML)
 Data Analytics & Frontend Enthusiast
+
+---
+
+## ⚙️ Installation & Setup
+
+```bash
+git clone https://github.com/silverscardosa-07/fintrack-personal-finance-analytics.git
+cd fintrack-dashboard
+npm install
+npm run dev
