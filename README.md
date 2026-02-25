@@ -72,8 +72,11 @@ A modern **data analytics–driven personal finance dashboard** that helps users
 
 ## 📂 Project Structure
 src/
+
  ├── App.jsx
+ 
  ├── index.css
+ 
  └── main.jsx
 
 ## 📈 Real-World Use Case
